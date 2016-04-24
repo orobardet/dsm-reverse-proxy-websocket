@@ -11,5 +11,13 @@ proxy_set_header Connection "upgrade";
 proxy_read_timeout 86400;
 ```
 
+Then restart the httpd with: 
+```
+sudo synoservicecfg --retart nginx
+```
+
+*This will restart ALL http service running, not only reverse proxy, as a single instance of NGinX runs everything.*
+
+
 A modified `Portal.mustache` is provided in this repo (warning: based on DSM 6.0-7321 Update 2).
 
