@@ -1,0 +1,41 @@
+{{#ReverseProxy}}
+server {
+    listen {{port}}{{#https}} ssl{{/https}}{{#https.http2}} http2{{/https.http2}}{{#reuseport}} reuseport{{/reuseport}};
+    listen [::]:{{port}}{{#https}} ssl{{/https}}{{#https.http2}} http2{{/https.http2}}{{#reuseport}} reuseport{{/reuseport}};
+
+    {{#resolver}}
+    resolver {{resolver}};
+    set $backend "{{backend}}";
+    {{/resolver}}
+
+    {{#fqdn}}
+    server_name {{fqdn}};
+    {{/fqdn}}
+
+    {{#https.certificate}}
+    ssl_certificate {{https.certificate}};
+    {{/https.certificate}}
+    {{#https.key}}
+    ssl_certificate_key {{https.key}};
+    {{/https.key}}
+
+    {{#https.hsts}}
+    {{> /usr/syno/share/nginx/HSTS}}
+    {{/https.hsts}}
+
+    location / {
+        proxy_set_header        Host                $host;
+        proxy_set_header        X-Real-IP           $remote_addr;
+        proxy_set_header        X-Forwarded-For     $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto   $scheme;
+        proxy_intercept_errors  on;
+        proxy_http_version      1.1;
+        {{#resolver}}
+        proxy_pass $backend;
+        {{/resolver}}
+        {{^resolver}}
+        proxy_pass {{backend}};
+        {{/resolver}}
+    }
+}
+{{/ReverseProxy}}
