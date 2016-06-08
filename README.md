@@ -13,7 +13,7 @@ proxy_read_timeout 86400;
 
 Then restart the httpd with: 
 ```
-sudo synoservicecfg --retart nginx
+sudo synoservicecfg --restart nginx
 ```
 
 *This will restart ALL http service running, not only reverse proxy, as a single instance of NGinX runs everything.*
