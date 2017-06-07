@@ -24,4 +24,4 @@ A modified `Portal.mustache` is provided in this repo (warning: based on DSM 6.0
 # Known DSM upgrade impacts on the `Portal.mustache` file
 
 - 6.1.1-15101-4 : leaves the `Portal.mustache` file unchange
-- 6.1.1-15101 : overwrite the `Portal.mustache`
+- 6.1.1-15101 : overwrites the `Portal.mustache`
