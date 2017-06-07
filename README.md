@@ -21,3 +21,7 @@ sudo synoservicecfg --restart nginx
 
 A modified `Portal.mustache` is provided in this repo (warning: based on DSM 6.0-7321 Update 2).
 
+# Known DSM upgrade impacts on the `Portal.mustache` file
+
+- 6.1.1-15101-4 : leaves the `Portal.mustache` file unchange
+- 6.1.1-15101 : overwrite the `Portal.mustache`
