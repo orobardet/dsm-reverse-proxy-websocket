@@ -3,7 +3,7 @@ Configuration fix for Synology DSM 6 reverse proxy to handle websocket
 
 **BACKUP YOUR `portal.mustache` BEFORE MODIFYING IT!**
 
-You need to edit the file `/usr/syno/share/nginx/Portal.mustache` to add the followings in the `Location` section:
+You need to edit the file `/usr/syno/share/nginx/Portal.mustache` to add the followings in the `location` section:
 
 ```
 proxy_set_header Upgrade $http_upgrade;
